@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useCallback } from 'react'
 import type { NextPage } from 'next'
 
 import { SearchList } from '../components/SearchList'
@@ -19,6 +19,10 @@ const Home: NextPage = () => {
     setData(desformmed)
   }
 
+  const handleAddWithList = useCallback(async (id: number) => {
+    console.log(id)
+  }, [])
+
   return (
     <div>
       <h1>Search</h1>
@@ -33,7 +37,7 @@ const Home: NextPage = () => {
 
       <div>
         {data &&
-          <SearchList results={data}/>
+          <SearchList results={data} onAddWithList={handleAddWithList}/>
         }
       </div>
     </div>
